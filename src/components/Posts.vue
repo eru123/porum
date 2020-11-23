@@ -1,16 +1,17 @@
 <template>
-  <div style="padding: 1em; border: 1px solid #ccc">
+  <div>
     <h4>Posts</h4>
-    <hr />
-    <div
-      style="padding: 1em; margin: 1em; border: 1px solid #ccc"
+    <v-card
+      class="mx-auto my-4"
       v-for="p in posts"
       :key="p.id"
+      align="left"
+      outlined
     >
-      <div>{{ p.title }}</div>
-      <hr />
-      <div>{{ p.content }}</div>
-    </div>
+      <v-card-title>{{ p.title }}</v-card-title>
+      <v-card-subtitle>{{ p.author }}</v-card-subtitle>
+      <v-card-text>{{ p.content }}</v-card-text>
+    </v-card>
   </div>
 </template>
 <script>
@@ -19,7 +20,7 @@ export default {
   name: "Posts",
   data() {
     return {
-      posts: []
+      posts: [],
     };
   },
   created() {
@@ -31,12 +32,13 @@ export default {
         .firestore()
         .collection("posts")
         .get()
-        .then(e => {
-          e.forEach(doc => {
+        .then((e) => {
+          e.forEach((doc) => {
             var data = {
               id: doc.id,
               title: doc.data().title || "No Title",
-              content: doc.data().content || "No content"
+              author: doc.data().displayName || doc.data().author || "Pepe",
+              content: doc.data().content || "No content",
             };
             this.posts.push(data);
           });
@@ -44,7 +46,7 @@ export default {
         .finally(() => {
           console.log(this.posts);
         });
-    }
-  }
+    },
+  },
 };
 </script>
