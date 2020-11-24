@@ -47,7 +47,7 @@ export default {
       loading: false,
       user: "",
       pass: "",
-      error: "",
+      error: ""
     };
   },
   created() {
@@ -61,16 +61,16 @@ export default {
       firebase
         .auth()
         .signInWithEmailAndPassword(this.user, this.pass)
-        .then((e) => {
+        .then(e => {
           this.error = e.message || "";
         })
-        .catch((e) => {
+        .catch(e => {
           this.error = e;
         })
         .finally(() => {
           this.loading = false;
         });
-    },
-  },
+    }
+  }
 };
 </script>

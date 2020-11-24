@@ -11,6 +11,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background: rgba(44, 62, 80, 0.1);
 }
 </style>
 
@@ -19,10 +20,10 @@ import firebase from "@/firebase";
 export default {
   name: "App",
   created() {
-    this.$on("change-auth", function (value) {
+    this.$on("change-auth", function(value) {
       this.$store.commit("changeAuth", value);
     });
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.$store.commit("changeAuth", true);
         this.$store.commit("changeUser", user);
@@ -40,6 +41,6 @@ export default {
         }
       }
     });
-  },
+  }
 };
 </script>

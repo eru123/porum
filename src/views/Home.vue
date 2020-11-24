@@ -3,8 +3,7 @@
     <div class="cross-container">
       <div class="left">LEFT</div>
       <div class="center container">
-        <h1>Home</h1>
-        <CreatePost /> <br />
+        <CreatePost />
         <Posts />
       </div>
       <div class="right">RIGHT</div>
@@ -24,7 +23,7 @@ export default {
   },
   components: {
     CreatePost,
-    Posts,
-  },
+    Posts
+  }
 };
 </script>

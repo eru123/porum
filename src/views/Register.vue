@@ -54,7 +54,7 @@ export default {
       user: "",
       pass: "",
       cpass: "",
-      error: "",
+      error: ""
     };
   },
   created() {
@@ -69,10 +69,10 @@ export default {
         firebase
           .auth()
           .createUserWithEmailAndPassword(this.user, this.pass)
-          .then((e) => {
+          .then(e => {
             this.error = e.message || "";
           })
-          .catch((e) => {
+          .catch(e => {
             this.error =
               e.message || "Failed to register account, try again later.";
           })
@@ -82,7 +82,7 @@ export default {
       } else {
         this.error = "Password doesn't match!";
       }
-    },
-  },
+    }
+  }
 };
 </script>

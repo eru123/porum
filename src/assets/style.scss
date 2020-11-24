@@ -1,9 +1,6 @@
 $breakpoint-desktop: 1099px;
 $breakpoint-tablet: 800px;
-
-.cross-nav {
-  border-bottom: 1px solid #ccc;
-}
+$cc-center-max-width: 500px;
 
 // Mobile
 .cross-container {
@@ -11,6 +8,9 @@ $breakpoint-tablet: 800px;
   flex-direction: column;
   max-width: $breakpoint-desktop;
   margin: auto;
+  > div {
+    overflow-x: hidden;
+  }
   > .left {
     flex: 1;
     order: 2;
@@ -22,7 +22,7 @@ $breakpoint-tablet: 800px;
     text-align: left;
 
     > div {
-      max-width: 600px;
+      max-width: $cc-center-max-width;
       margin: auto;
     }
   }
@@ -46,7 +46,7 @@ $breakpoint-tablet: 800px;
       flex: 2;
       order: 2;
       > div {
-        max-width: 600px;
+        max-width: $cc-center-max-width;
         margin: auto;
       }
     }
@@ -69,7 +69,7 @@ $breakpoint-tablet: 800px;
       flex: 2;
       order: 2;
       > div {
-        max-width: 600px;
+        max-width: $cc-center-max-width;
         margin: auto;
       }
     }
