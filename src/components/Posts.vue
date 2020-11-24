@@ -10,9 +10,9 @@
     >
       <v-card-title>{{ p.title }}</v-card-title>
       <v-card-subtitle>{{ p.author }}</v-card-subtitle>
-      <v-card-text
-        >{{ p.content }}
-        <v-img :src="p.avatar"></v-img>
+      <v-card-text class="d-flex">
+        <v-img :src="p.avatar" width="30px" class="mr-4"></v-img>
+        {{ p.content }}
       </v-card-text>
     </v-card>
     <div v-if="loading">
@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       loading: false,
-      posts: []
+      posts: [],
     };
   },
   created() {
@@ -48,14 +48,14 @@ export default {
         .firestore()
         .collection("posts")
         .get()
-        .then(e => {
-          e.forEach(doc => {
+        .then((e) => {
+          e.forEach((doc) => {
             var data = {
               id: doc.id,
               title: doc.data().title || "No Title",
               author: doc.data().displayName || doc.data().author || "Pepe",
               content: doc.data().content || "No content",
-              avatar: gravatar(doc.data().author)
+              avatar: gravatar(doc.data().author),
             };
             this.posts.push(data);
           });
@@ -64,7 +64,7 @@ export default {
           console.log(this.posts);
           this.loading = false;
         });
-    }
-  }
+    },
+  },
 };
 </script>
